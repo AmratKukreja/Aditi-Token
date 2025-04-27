@@ -22,7 +22,7 @@ const AboutToken = () => {
         <div className="flex-1 flex flex-col justify-center py-6 px-4 md:py-10 md:px-6 text-center md:text-left">
           <h2 className="text-xl md:text-2xl font-bold text-white mb-4 drop-shadow-lg leading-tight">The Story Behind ADITI Token</h2>
           <p className="text-base md:text-lg text-gray-200 mb-5 leading-relaxed">
-            ADITI Token isn't just another crypto project—it's a heartfelt tribute to my best friend. I created this token to celebrate our friendship, the memories we've shared, and the support we've given each other through every high and low. This token is a symbol of trust, loyalty, and the unbreakable bond we share.
+          ADITI Token isn't just another crypto project—it's a heartfelt tribute to my best friends. I created this token to celebrate our friendships, the memories we've shared, and the support we've given each other through every high and low. This token is a symbol of trust, loyalty, and the unbreakable bonds we share.
           </p>
           <div className="mt-5 flex items-center justify-center md:justify-start gap-2">
             <span className="text-pink-300 font-semibold text-base md:text-lg">For my best friend, with love.</span>
