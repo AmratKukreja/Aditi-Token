@@ -20,6 +20,7 @@ import './styles/animations.css';
 function App() {
   const [userAddress, setUserAddress] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +32,10 @@ function App() {
 
   const handleConnect = (address) => {
     setUserAddress(address);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -51,10 +56,12 @@ function App() {
               <ADTLogo className="w-12 h-12 float-animation" />
               <h1 className="text-2xl font-bold text-white">ADITI Token</h1>
             </Motion.div>
+            
+            {/* Desktop Menu */}
             <Motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-4"
+              className="hidden md:flex items-center space-x-4"
             >
               <div className="bg-gray-800/50 px-4 py-2 rounded-lg">
                 <PriceTicker />
@@ -62,7 +69,52 @@ function App() {
               <ThemeToggle />
               <WalletConnect onConnect={handleConnect} />
             </Motion.div>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center">
+              <button 
+                onClick={toggleMobileMenu}
+                className="text-white p-2 focus:outline-none"
+              >
+                <svg 
+                  className="w-6 h-6" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth="2" 
+                    d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
+          
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <Motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="md:hidden bg-gray-800/95 backdrop-blur-sm mt-4 py-4 px-2 rounded-lg"
+            >
+              <div className="flex flex-col space-y-4">
+                <div className="bg-gray-800/50 px-4 py-2 rounded-lg">
+                  <PriceTicker />
+                </div>
+                <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
+                <div className="flex justify-center">
+                  <WalletConnect onConnect={handleConnect} />
+                </div>
+              </div>
+            </Motion.div>
+          )}
         </div>
       </header>
 
